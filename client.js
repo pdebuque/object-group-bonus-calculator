@@ -48,10 +48,10 @@ const employees = [
 console.log('array of employee data: ', employees);
 
 // ----------------- calculate 1 employee's bonus -----------
-const ratingBonusArray = [0, 0, .04, .06, .1];
+const ratingBonusArray = [0, 0, 0, .04, .06, .1];
 
 function determineBonus(employee) {
-  let bonus = ratingBonusArray[employee.reviewRating - 1] //initialize by referencing above array, shortcutting a bunch of if/elses.
+  let bonus = ratingBonusArray[employee.reviewRating] //initialize by referencing above array, shortcutting a bunch of if/elses.
 
   if (employee.employeeNumber.length === 4) {
     bonus += .05
