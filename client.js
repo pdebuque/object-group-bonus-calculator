@@ -1,4 +1,16 @@
-// array of employee objects
+// -------------- get everything ready -------------
+
+
+console.log('js')
+
+$(document).ready(readyNow);
+// once document is ready, load functionalities
+function readyNow() {
+  console.log('jQuery');
+  $('#seeSalaries').on('click', appendSalaries);
+}
+
+// ----------------- array of employee objects ------------
 const employees = [
   {
     name: 'Atticus',
@@ -32,26 +44,80 @@ const employees = [
   }
 ];
 
-console.log('array of employee data: ',  employees );
+console.log('array of employee data: ', employees);
 
+// ----------------- calculate 1 employee's bonus -----------
 
-// YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
+function determineBonus(employee) {
+  let bonus;
+  switch (employee.reviewRating) {
 
-// This problem is massive! Break the problem down, take small steps, and test as you go.
-// What is the fewest lines of code I can write and test to get just a little closer?
+    case 1:
+      bonus = 0;
+      break;
+    case 2:
+      bonus = 0;
+      break;
+    case 3:
+      bonus = .04;
+      break;
+    case 4:
+      bonus = .06;
+      break;
+    case 5:
+      bonus = .1;
+      break;
+  }
 
-// This is not a race. Everyone on your team should understand what is happening.
-// Ask questions when you don't.
+  if (employee.employeeNumber.length === 4) {
+    bonus += .05
+  };
+  if (employee.annualSalary >= 65000) {
+    bonus -= .01
+  };
 
+  if (bonus > .13) {
+    bonus = .13;
+  }
+  if (bonus < 0) {
+    bonus = 0;
+  }
 
+  return bonus
+}
+for (let employee of employees) {
+  console.log(determineBonus(employee));
+}
 
-
-// This function will calculate 1 employee's bonus!
-//
-function calculateIndividualEmployeeBonus( employee ) {  
+function calculateIndividualEmployeeBonus(employee) {
   // your logic here
-  
-  
-  // return new object with bonus results
+  const employeeWithBonus = {};
+  employeeWithBonus.name = employee.name;
+  employeeWithBonus.bonusPercentage = determineBonus(employee);
+  employeeWithBonus.totalCompensation = Math.round(Number(employee.annualSalary) * (1 + employeeWithBonus.bonusPercentage));
+  employeeWithBonus.totalBonus = Math.round(employee.annualSalary * employeeWithBonus.bonusPercentage);
 
+  // return new object with bonus results
+  return employeeWithBonus
+}
+
+for (let employee of employees) {
+  console.log(calculateIndividualEmployeeBonus(employee));
+}
+
+// --------- create new object with employee data fed through bonuses function --------
+
+const employeeBonuses = calculateIndividualEmployeeBonus(employees)
+console.log(employeeBonuses);
+
+// ---------- take new object data and put into DOM ------------
+
+// DOM
+
+function appendSalaries() {
+  console.log('in appendSalaries');
+  for (let employee of employees) {
+    $('#list-of-employees').append(
+      `<li>employee</li>`);
+  }
 }
