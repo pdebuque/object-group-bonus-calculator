@@ -8,7 +8,7 @@ $(document).ready(readyNow);
 function readyNow() {
   console.log('jQuery');
   $('#seeSalaries').on('click', appendSalaries);
-  $('#clear').on('click', clearInfo)
+  $('#clear').on('click', clearInfo);
 }
 
 // ----------------- array of employee objects ------------
@@ -48,31 +48,15 @@ const employees = [
 console.log('array of employee data: ', employees);
 
 // ----------------- calculate 1 employee's bonus -----------
+const ratingBonusArray = [0, 0, .04, .06, .1];
 
 function determineBonus(employee) {
-  let bonus;
-  switch (employee.reviewRating) {
-
-    case 1:
-      bonus = 0;
-      break;
-    case 2:
-      bonus = 0;
-      break;
-    case 3:
-      bonus = .04;
-      break;
-    case 4:
-      bonus = .06;
-      break;
-    case 5:
-      bonus = .1;
-      break;
-  }
+  let bonus = ratingBonusArray[employee.reviewRating - 1] //initialize by referencing above array, shortcutting a bunch of if/elses.
 
   if (employee.employeeNumber.length === 4) {
     bonus += .05
   };
+
   if (employee.annualSalary >= 65000) {
     bonus -= .01
   };
