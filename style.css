@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(246, 214, 180);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid orange;
+    border-radius: 6px;
+    display: inline-block;
+    background-color: rgb(249, 197, 141)
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(205, 233, 243);
+    color: rgb(36, 52, 67);
+    display: inline-block;
+    margin: .3em .3em;
+    padding: .3em;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 2px solid rgb(190, 188, 188);
+
+    filter: drop-shadow(1px 2px 2px #696969);
+}
+
+button {
+    border: none;
+    padding: .5em;
+    margin-left: 20px;
+    margin-bottom: .8em;
+    border-radius: 4px;
+    filter: drop-shadow(3px 3px 3px #696969);
+    color: rgb(36, 52, 67);
+    width: 120px;
+    font-weight: 600;
+
+}
+
+button:hover {
+    background-color: rgb(45, 62, 77);
+    color: aliceblue;
+    cursor: pointer;
+}
+
+button:active {
+    color: rgb(36, 52, 67);
+    background-color: buttonface;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    padding: .3em;
+    list-style: none;
+    background-color: rgb(205, 233, 243);
+    margin: .3em;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid darkgrey;
+    filter: drop-shadow(1px 2px 2px #696969);
+}
+
+.employee-name {
+    color: white;
+    background-color: rgb(85, 85, 239);
+    font-weight: 700;
+    padding: .2em;
+    border-radius: 4px;
+    margin: .2em;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}
+
+.info {
+    background-color: rgb(152, 54, 54);
+    color: white;
+    font-weight: 400;
+    padding: .2em;
+    border-radius: 4px;
+    display: inline-block;
+    width: 200px;
+    margin: .2em;
+    text-align: center;
+    font-size: 14px;
+}

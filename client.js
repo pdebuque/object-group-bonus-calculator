@@ -8,6 +8,7 @@ $(document).ready(readyNow);
 function readyNow() {
   console.log('jQuery');
   $('#seeSalaries').on('click', appendSalaries);
+  $('#clear').on('click', clearInfo)
 }
 
 // ----------------- array of employee objects ------------
@@ -107,8 +108,12 @@ for (let employee of employees) {
 
 // --------- create new object with employee data fed through bonuses function --------
 
-const employeeBonuses = calculateIndividualEmployeeBonus(employees)
-console.log(employeeBonuses);
+const employeeBonuses = [];
+for (let employee of employees) {
+  employeeBonuses.push(calculateIndividualEmployeeBonus(employee))
+}
+
+console.log('employee bonuses:', employeeBonuses);
 
 // ---------- take new object data and put into DOM ------------
 
@@ -116,8 +121,22 @@ console.log(employeeBonuses);
 
 function appendSalaries() {
   console.log('in appendSalaries');
-  for (let employee of employees) {
+  //clear ul html
+  $('#list-of-employees').html('');
+
+  //append each list item
+  // for (let employee of employeeBonuses) {
+  //   $('#list-of-employees').append(
+  //     `<li><span class='employee-name'>${employee.name}</span>: Bonus Amount: ${employee.totalBonus}; Bonus Percent: ${employee.bonusPercentage}; Total Compensation: ${employee.totalCompensation}</li>`);
+  // }
+
+  for (i = 0; i < employees.length; i++) {
     $('#list-of-employees').append(
-      `<li>employee</li>`);
+      `<li><span class='employee-name'>${employees[i].name}</span> <span class='info'> Annual Salary: ${employees[i].annualSalary}</span> <span class='info'>Bonus Percent: ${employeeBonuses[i].bonusPercentage}</span> <span class='info'>Bonus Amount: ${employeeBonuses[i].totalBonus}</span> <span class='info'>Total Compensation: ${employeeBonuses[i].totalCompensation}</span></li>`);
   }
+}
+
+function clearInfo() {
+  console.log('in clearInfo')
+  $('#list-of-employees').html('');
 }
